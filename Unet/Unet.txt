@@ -1,0 +1,46 @@
+1.setup the environment (https://www.youtube.com/watch?v=T0BiFBaMLDQ&feature=youtu.be)
+	download 
+		python 3.9.13(add to path)
+			https://www.python.org/downloads/release/python-3913/
+		pytoch https://pytorch.org/get-started/locally/
+			pip3 install torch torchvision torchaudio
+		'cv2'
+			pip install opencv-python 
+		'sklearn' 
+			pip install scikit-learn 
+		'tqdm'
+			pip install tqdm
+		'imageio'
+			pip install imageio
+		Unet on github
+			https://github.com/sy900321/111-B04/tree/main/Unet
+			
+2.create dataset folder
+	dataset/train/image (put the train imges)
+	dataset/val/image   (put the valid imges)
+	dataset/train/mask  (put the train label)
+	dataset/val/mask    (put the valid label)
+	dataset/test        (put the test  imges)
+	
+3.labeling(choose on below)
+	roboflow(https://roboflow.com/)
+	makesance(https://www.makesense.ai/)
+	lableme(pip install labelme, labelme)
+
+4.Convert the label to mask
+	export cocojson 
+	using the code (https://github.com/sy900321/111-B04/blob/main/ODM_mask_Semantic_Segmentation/Semantic%20Segmentation.py)
+	save the mask into dataset
+	copy or move dataset folder into: Unet/dataset
+
+5.train
+	cd to unet folder
+		cd ../Unet
+	train 
+		python train.py -b 2 -e 30 -d dataset
+
+6.run
+	the training resalut: files\[a].pth
+	run
+		python test.py -w files\[a].pth -s dataset\test
+	the result at unet\results
